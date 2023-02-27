@@ -21,6 +21,11 @@ export class AppController {
     return this.userController.delete(id);
   }
 
+  @Post('/update/:id')
+  update(@Param('id') id: any, @Body() body: any) {
+    return this.userController.update(this.validator, body, id);
+  }
+
   @Post('/')
   async users() {
     return this.userController.getUsers();

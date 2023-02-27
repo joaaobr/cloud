@@ -36,6 +36,18 @@ export default class UserController {
     return User.findByIdAndRemove(id);
   }
 
+  async update(validator: Validator, body: user, id: string) {
+    const validateId = await validator.validateIfIdAlreadyExists(id);
+
+    if (validateId) return validateId;
+
+    const user = await User.findByIdAndUpdate(id, body, { now: true });
+
+    console.log(user)
+      
+    return user;
+  }
+
   getUsers() {
     return User.find();
   }

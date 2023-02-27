@@ -5,15 +5,17 @@ export default class Validator {
     if (!name) return { message: 'name is required!' };
     if (!email) return { message: 'e-mail is required!' };
     if (!password) return { message: 'password is required!' };
-
-    return null;
   }
 
   async validateIfEmailAlreadyExists(email: string) {
     const user = await User.findOne({ email });
 
     if (user) return { message: 'this e-mail already exists!' };
+  }
 
-    return null;
+  async validateIfIdAlreadyExists(id: string) {
+    const user = await User.findById(id);
+
+    if (!user) return { message: 'this id is not already exists!' };
   }
 }
