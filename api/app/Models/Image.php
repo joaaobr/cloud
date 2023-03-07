@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Store extends Model
+class Image extends Model
 {
     use HasFactory;
 
-    function productis() {
-        return $this->hasMany();
-    }
+    use HasFactory;
+
+    protected $fillable = [
+        'id',
+        'path',
+    ];
 }
