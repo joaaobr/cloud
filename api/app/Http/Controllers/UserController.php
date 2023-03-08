@@ -18,7 +18,9 @@ class UserController extends Controller {
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+
+        $hash = password_hash($request->password, PASSWORD_DEFAULT);
+        $user->password = $hash;
 
         $user->save();
 

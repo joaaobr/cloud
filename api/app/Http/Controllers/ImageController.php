@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Image;
 
 const IMAGE_PATH = 'img/images';
+
 class ImageController extends Controller {
 
     public function index() {
