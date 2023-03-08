@@ -10,9 +10,9 @@ const IMAGE_PATH = 'img/images';
 class ImageController extends Controller {
 
     public function index() {
-        $datas = Image::all();
+        $images = Image::all();
 
-        return ['images' => $datas];
+        return ['images' => $images];
     }
 
     function makePath($name, $extension) {
