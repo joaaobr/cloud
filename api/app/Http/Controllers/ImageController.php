@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Image;
 
+use App\Models\User;
+
 const IMAGE_PATH = 'img/images';
 
 class ImageController extends Controller {
@@ -20,10 +22,17 @@ class ImageController extends Controller {
         return IMAGE_PATH . $name . strtotime('now') . "." . $extension;
     }
 
+
     public function store(Request $request) {
         $image = new Image;
 
-        $image->id = $request->id;
+        $user = User::find($request->id);
+
+        if(!$user) {
+            return ['message' => 'id is nor valid!'];
+        }
+
+        $image->id_user = $request->id;
 
         if($request->hasFile('image') && $request->file('image')->isValid()) {
             $extension = $request->image->extension();
