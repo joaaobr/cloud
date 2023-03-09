@@ -25,3 +25,5 @@ Route::post('/user/create', [UserController::class, 'create']);
 
 Route::post('/user/delete/{id}', [UserController::class, 'delete']);
 
+Route::post('/user/update/{id}', [UserController::class, 'update']);
+

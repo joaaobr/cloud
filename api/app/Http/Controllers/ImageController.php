@@ -19,7 +19,7 @@ class ImageController extends Controller {
     }
 
     function makePath($name, $extension) {
-        return IMAGE_PATH . $name . strtotime('now') . "." . $extension;
+        return IMAGE_PATH . strtotime('now') . '-' . $name;
     }
 
     function validateIfIdOfUserExists($id) {
