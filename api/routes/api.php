@@ -17,7 +17,11 @@ Route::get('/image/{image}', function ($image) {
     return view('show', [ 'image' => $image ]);
 });
 
+Route::post('/image/delete/{id}', [ImageController::class, 'delete']);
+
 Route::get('/user/all', [UserController::class, 'all']);
 
-
 Route::post('/user/create', [UserController::class, 'create']);
+
+Route::post('/user/delete/{id}', [UserController::class, 'delete']);
+

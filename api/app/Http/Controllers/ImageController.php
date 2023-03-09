@@ -8,7 +8,7 @@ use App\Models\Image;
 
 use App\Models\User;
 
-const IMAGE_PATH = 'img/images';
+const IMAGE_PATH = 'img/images/';
 
 class ImageController extends Controller {
 
@@ -50,5 +50,15 @@ class ImageController extends Controller {
         $image->save();
 
         return $image;
+    }
+
+    public function delete($id) {
+        $user = Image::findOrFail($id);
+
+        unlink($user->path);
+
+        $user->delete();
+
+        return [ 'message' => 'Image removed successfully!' ];
     }
 }
