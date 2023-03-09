@@ -12,7 +12,7 @@ const IMAGE_PATH = 'img/images';
 
 class ImageController extends Controller {
 
-    public function index() {
+    public function all() {
         $images = Image::all();
 
         return ['images' => $images];

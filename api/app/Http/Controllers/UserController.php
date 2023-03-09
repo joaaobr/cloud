@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 class UserController extends Controller {
-    public function index() {
+    public function all() {
         $users = User::all();
 
-        return ['user' => $users];
+        return ['users' => $users];
     }
 
     public function create(Request $request) {
