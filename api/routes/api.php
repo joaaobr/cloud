@@ -12,7 +12,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/image/all', [ImageController::class, 'index']);
 
 
-Route::post('/image/create', [ImageController::class, 'store']);
+Route::post('/image/create', [ImageController::class, 'create']);
 
 Route::get('/image/{image}', function ($image) {
     return view('show', [ 'image' => $image ]);

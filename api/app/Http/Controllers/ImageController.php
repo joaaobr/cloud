@@ -22,15 +22,20 @@ class ImageController extends Controller {
         return IMAGE_PATH . $name . strtotime('now') . "." . $extension;
     }
 
-
-    public function store(Request $request) {
-        $image = new Image;
-
-        $user = User::find($request->id);
+    function validateIfIdOfUserExists($id) {
+        $user = User::find($id);
 
         if(!$user) {
-            return ['message' => 'id is nor valid!'];
+            return ['message' => 'Id is not valid!'];
         }
+    }
+
+
+    public function create(Request $request) {
+        $image = new Image;
+
+        $idValidation = self::validateIfIdOfUserExists($request->id);
+        if ($idValidation) { return $idValidation; }
 
         $image->id_user = $request->id;
 
