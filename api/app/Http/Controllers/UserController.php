@@ -52,4 +52,10 @@ class UserController extends Controller {
 
         return [ 'message' => 'User updated successfuly!' ];
     }
+
+    public function find(Request $request) {
+        $user = User::findOrFail($request->id);
+
+        return ['user' => $user];
+    }
 }

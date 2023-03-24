@@ -29,4 +29,6 @@ Route::prefix('user')->group(function () {
     Route::post('/delete/{id}', [UserController::class, 'delete']);
     
     Route::post('/update/{id}', [UserController::class, 'update']);
+
+    Route::post('/find', [UserController::class, 'find']);
 });
