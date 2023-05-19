@@ -13,6 +13,8 @@ class UserController extends Controller {
         if(!$user) {
             return ['message' => 'Id is not valid!'];
         }
+
+        return ['message' => 'Id is valid!'];
     }
 
     public function all() {
@@ -21,7 +23,19 @@ class UserController extends Controller {
         return ['users' => $users];
     }
 
-    public function create(Request $request) {
+    public function create(Request $request) {       
+        if(!$request->name) {
+            return ['message' => 'name is required'];
+        }
+        
+        if(!$request->email) {
+            return ['message' => 'email is required'];
+        }
+
+        if(!$request->password) {
+            return ['message' => 'password is required'];
+        }
+
         $user = new User;
 
         $user->name = $request->name;
@@ -42,6 +56,10 @@ class UserController extends Controller {
     }
 
     public function update(Request $request) {
+        if(!$request->id) {
+            return ['message' => 'id is required'];
+        }
+
         $idValidation = self::validateIfIdOfUserExists($request->id);
         
         if ($idValidation) { return $idValidation; }
@@ -54,6 +72,10 @@ class UserController extends Controller {
     }
 
     public function find(Request $request) {
+        if(!$request->id) {
+            return ['message' => 'id is required'];
+        }
+        
         $user = User::findOrFail($request->id);
 
         return ['user' => $user];
